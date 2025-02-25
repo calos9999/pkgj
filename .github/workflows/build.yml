@@ -1,6 +1,8 @@
 name: build
 run-name: Build
-on: [push]
+on:
+  push:
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -61,7 +63,6 @@ jobs:
         run: |
           git config --global user.name "GitHub actions"
           git config --global user.email "actions@github.com"
-
           mv pkgj.vpk pkgj-${{ github.ref_name }}.vpk
           git add -u
           git add pkgj-${{ github.ref_name }}.vpk
